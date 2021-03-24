@@ -1,0 +1,40 @@
+
+
+<div>
+  <div class="page lists-show">
+    <nav>
+      <h1 class="title-page">
+        <span class="title-wrapper">
+          Taskbox
+        </span>
+      </h1>
+    </nav>
+    {{#if this.loading}}
+      <LoadingRow />
+      <LoadingRow />
+      <LoadingRow />
+      <LoadingRow />
+      <LoadingRow />
+    {{else if this.error}}
+      <div class="page lists-show">
+        <div class="wrapper-message">
+          <span class="icon-face-sad"></span>
+          <div class="title-message">
+            Oh no!
+          </div>
+          <div class="subtitle-message">
+            Something went wrong
+          </div>
+        </div>
+      </div>
+    {{else}}
+      <TaskList
+        @tasks={{this.tasks}}
+        @pinTask={{this.pinTask}}
+        @archiveTask={{this.archiveTask}}
+      />
+    {{/if}}
+  </div>
+</div>
+
+{{yield}}

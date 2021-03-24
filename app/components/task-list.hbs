@@ -1,0 +1,27 @@
+{{#if @loading}}
+  <LoadingRow />
+  <LoadingRow />
+  <LoadingRow/>
+  <LoadingRow />
+  <LoadingRow />
+{{else if this.tasksInOrder}}
+  {{#each this.tasksInOrder as |task|}}
+    <Task
+       @task={{task}}
+       @pin={{fn @pinTask task.id}}
+       @archive={{fn @archiveTask task.id}}
+    />
+   {{/each}}
+{{else}}
+  <div class="list-items">
+    <div class="wrapper-message">
+      <span class="icon-check" />
+      <div class="title-message">You have no tasks</div>
+      <div class="subtitle-message">Sit back and relax</div>
+    </div>
+  </div>
+{{/if}}
+
+
+
+{{yield}}
